@@ -1,11 +1,47 @@
+Objective C tutorial via http://www.technobuffalo.com/2011/03/27/introduction-to-ios-development-an-overview-of-objective-c/
+
+
+Objective-c is a compiled programming language, which is essentially C with the addition of some object-oriented features (based on SmallTalk, and rather different from C++ or Java). 
+
+Messages versus Methods: Objective-C classes do not call methods in eachother; rather they "Send Messages" with the syntax [obj method: argument]. Message targets are resolved at runtime rather than compile time, and it's allowed for a message to simply be left unaused. This is awesome for building to interfaces. Note that resolving the target at runtime does impose a heavy intial cost (compared to C++ cirtual methods) but subsequent calls are much lighter.
+
+Interfaces and Implementation: Objective-C requires that the interface and implementation of classes be declared in separate, explicitly-labelled code blocks, so developers have adopted the convention of placing interface definitions in .h header files and implementation in .m files. The syntax is a little crazy coming from C++/Java:
+
+@interface classname : superclassname
+{
+	//instance variables
+}
++	classMethod1;
++	(return_type)classMethod2;
++	(return_type)classMethod3: (param1_type)param1_varName;
+
+-	(return_type)instanceMethod1:(param1_type)param1_varName;
+@end
+
+@implementation classname
++	(return_type)classMethod
+{
+	//implementation
+}
+-	(return_type)instanceMethod
+{
+	//implementation
+}
+@end
+
+
+
+----------------
+
+ToDoList tutorial below
+
+
+
 These are my notes from the official iOS tutorial “Start Developing iOS Apps Today”, which walks through the creation of a ToDoList app.
 
 Initial setup, you need Xcode and the IOS SDK.
 
 Xcode gives you the option of writing in either objective-c or swift. Swift is very new, so it might be best for me tolerant the more-established objective-c first.
-
-Objective-c is an object oriented language based on C, with the usual ideas of classes, inheritance and so forth but a rather different syntax than Java/C++. 
-
 
 For this tutorial we’ll start with a “Single-View Application” template and name it ToDoList.
 
@@ -18,6 +54,14 @@ int main(int argc, char * argv[]) {
     return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
+
+The outer call to "main" is the typical starting point for program execution.
+
+@autoreleasepool specifies the type of memory management which should be used for the calls within. @autoreleasepool basically tells the compiler that memory for the calls within should not be released until execution leaves the scope of @autoreleasepool. 
+
+The call to UIApplicationMain(...) creates a UIApplication object... basically a high-level representation of an application. This class is defined as part of the UIKit framework and we do not need to modify it (at least, not in this tutorial)
+
+The call above takes [AppDelegate class] as an argument, and this argument creates an instance of the AppDelegate class. AppDelegate runs our custom code, and since we started from a template some of that code is already written.
 
 
 

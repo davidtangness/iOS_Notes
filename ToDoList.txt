@@ -1,0 +1,23 @@
+These are my notes from the official iOS tutorial “Start Developing iOS Apps Today”, which walks through the creation of a ToDoList app.
+
+Initial setup, you need Xcode and the IOS SDK.
+
+Xcode gives you the option of writing in either objective-c or swift. Swift is very new, so it might be best for me tolerant the more-established objective-c first.
+
+Objective-c is an object oriented language based on C, with the usual ideas of classes, inheritance and so forth but a rather different syntax than Java/C++. 
+
+
+For this tutorial we’ll start with a “Single-View Application” template and name it ToDoList.
+
+The template code can be build and run immediately in XCode’s iOS simulator. Running it will give us a white screen with the name “ToDoList” in the middle, which switches to a blank white screen after a few seconds. 
+
+So what code is making this happen? We'll start in the "main" function of the file "main.m", which can be found in the project's Suporting Files folder.
+
+int main(int argc, char * argv[]) {
+@autoreleasepool {
+    return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}
+
+
+
